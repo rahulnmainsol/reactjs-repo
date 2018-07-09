@@ -1,0 +1,9 @@
+This is simple demo app to check the working for HTTP request from react application
+
+
+Here "axios" package is used to perform these request (like GET and POST , DELETE)
+
+
+* sample JASON data is taken from the link *
+
+-- https://jsonplaceholder.typicode.com/

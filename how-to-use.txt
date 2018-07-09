@@ -1,5 +1,5 @@
 How to use the downloaded files
 
-1) Run "npm install" in the extracted folder
-2) Run "npm start" to view the project
+1) Run "npm install" in the extracted folder (if downloaded as .Zip file ) also run this if the node modules folder is missing 
+2) Run "npm start" to view check the project the project
 
