@@ -1,9 +1,16 @@
 import React, { Component } from 'react';
 import Posts from './Posts/Posts';
-import NewPost from './NewPost/NewPost';
+// import NewPost from './NewPost/NewPost';
 
 import './Blog.css';
-import { Route , Link } from 'react-router-dom';
+import { Route , NavLink, Switch, Redirect } from 'react-router-dom';
+import asyncComponent from '../../hoc/asyncComponent';
+
+const asyncNewPost = asyncComponent( () => {
+    return import('./NewPost/NewPost');
+});
+
+
 
 class Blog extends Component {
 
@@ -14,18 +21,22 @@ class Blog extends Component {
                 <header>
                     <nav>
                         <ul>
-                            <li><Link to="/">Home</Link></li>
-                            <li><Link to={{
+                            <li><NavLink to="/posts" exact>Posts</NavLink></li>
+                            <li><NavLink to={{
                                 pathname: '/new-post',
                                 hash: '#submit',
                                 search: '?quick-submit=true'
-                            }}>New Posts</Link></li>
+                            }}>New Posts</NavLink></li>
                         </ul>
                     </nav>
                 </header>
-
-                <Route path="/" exact  component={Posts}/>
-                <Route path="/new-post" component={NewPost}/>
+                
+                
+                <Switch>
+                    <Route path="/new-post" component={asyncNewPost}/>
+                    <Route path="/posts"  component={Posts}/>
+                    <Redirect from="/" to="/posts" />
+                </Switch>
 
                 
             {/* <section>
